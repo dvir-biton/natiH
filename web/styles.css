@@ -85,12 +85,23 @@ header .headline p {
 .btn {
     font-family: inherit;
     font-weight: inherit;
+    background-color: var(--header-blue);
+    color: #FFFFFF;
     padding: 10px 40px;
-    background-color: #FFFFFF;
-    color: var(--header-blue);
+    max-width: 70%;
     border-radius: 100px;
     border-width: 0;
     cursor: pointer;
+}
+
+.white-btn {
+    background-color: #FFFFFF;
+    color: var(--header-blue);
+}
+
+#center-btn-section {
+    display: flex;
+    justify-content: center;
 }
 
 /* Features section */
@@ -209,6 +220,7 @@ ol :last-child {
     height: 20px;
     background-color: #007DD3;
     border-radius: 50%;
+    flex-shrink: 0;
 }
 
 /* Form Section */
@@ -378,7 +390,6 @@ footer {
     background-color: var(--header-blue);
     color: #FFFFFF;
     padding: 10px 150px;
-    max-width: 70%;
 }
 
 #tax-refund-form {
