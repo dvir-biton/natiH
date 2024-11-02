@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accountant Site</title>
+    <meta name="description" content="בדיקת זכאות להחזר מס עבור שכירים">
+    <meta name="keywords" content="החזר מס, עורכי דין, משרד, Netanel Hekmati, Hekmati">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Rubik:wght@300..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <a href="https://wa.me/972552655435?text=שלום,+אני+מעוניין+בבדיקת+זכאות+להחזר+מס." class="float">
+        <img src="assets/whatsapp.svg" alt="Chat on Whatsapp">
+    </a>
+
+    <div id="first-popup" class="popup">
+        <h1>כנראה ומגיע לכם החזר מס!</h1>
+        <p>כמה פרטים קטנים וניצור איתך קשר בהקדם לבדיקת זכאות מקיפה <b>בחינם</b></p>
+        <form action="/submit" method="post" id="tax-refund-form">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="income">משכורת ממוצעת חודשית ברוטו:</label>
+                    <select id="income" name="income">
+                        <option value=""></option>
+                        <option value="1">עד 8,000</option>
+                        <option value="2">בין 8,000-10,000</option>
+                        <option value="3">בין 10,000-15,000</option>
+                        <option value="4">מעל 15,000</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="work-status">מה סטאטוס העבודה שלך?</label>
+                    <select id="work-status" name="work-status">
+                        <option value=""></option>
+                        <option value="1">שכיר</option>
+                        <option value="2">עצמאי</option>
+                        <option value="3">ללא עבודה</option>
+                        <option value="4">בפנסיה</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="family-status">האם השתנה המצב המשפחתי שלך ב-6 השנים האחרונות?</label>
+                    <select id="family-status" name="family-status">
+                        <option value=""></option>
+                        <option value="1">כן</option>
+                        <option value="2">לא</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="unemployment-duration">האם ב-6 שנים האחרונות הייתה לך תקופת אבטלה/חופשת לידה?</label>
+                    <select id="unemployment-duration" name="unemployment-duration">
+                        <option value=""></option>
+                        <option value="1">כן</option>
+                        <option value="2">לא</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="work-change">האם החלפת עבודות ב-6 השנים האחרונות?</label>
+                    <select id="work-change" name="work-change">
+                        <option value=""></option>
+                        <option value="1">כן</option>
+                        <option value="2">לא</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="shebah-tax">האם מכרת נכס ושילמת מס שבח ב6 שנים האחרונות (מס על הרווח במכירה)?</label>
+                    <select id="shebah-tax" name="shebah-tax">
+                        <option value=""></option>
+                        <option value="1">כן</option>
+                        <option value="2">לא</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fund-withdrawal">האם משכת כספים מקרן פנסיה, קופת גמל, או קרן השתלמות ושילמת מס?</label>
+                    <select id="fund-withdrawal" name="fund-withdrawal">
+                        <option value=""></option>
+                        <option value="1">כן</option>
+                        <option value="2">לא</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pays-alimony">האם אתה גרוש/ה ומשלם מזונות?</label>
+                    <select id="pays-alimony" name="pays-alimony">
+                        <option value=""></option>
+                        <option value="1">כן</option>
+                        <option value="2">לא</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="insurance-deposit">האם אתה מפקיד לביטוח חיים/ביטוח משכנתא?</label>
+                    <select id="insurance-deposit" name="insurance-deposit">
+                        <option value=""></option>
+                        <option value="1">כן</option>
+                        <option value="2">לא</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="discharged-soldier">האם הינך חייל משוחרר או סיימת תואר אקדמאי/תעודה? אם כן באיזו
+                        שנה?</label>
+                    <select id="discharged-soldier" name="discharged-soldier">
+                        <option value=""></option>
+                        <option value="1">לא</option>
+                        <option value="2">2017</option>
+                        <option value="3">2018</option>
+                        <option value="4">2019</option>
+                        <option value="5">2020</option>
+                        <option value="6">2021</option>
+                        <option value="7">2022</option>
+                        <option value="8">2023</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn">הבא</button>
+        </form>
+    </div>
+    <div id="second-popup" class="popup">
+        <div class="contact-form">
+            <h2>השאירו את הפרטים ויועץ המס יחזור אליכם בהקדם</h2>
+            <form action="/submit" method="post" id="popup-contact-form">
+                <input name="full-name" type="text" placeholder="שם" class="person-bg" required autocomplete="name">
+                <input name="phone-number"="tel" placeholder="טלפון" class="tel-bg" dir="rtl" minlength="12"
+                    maxlength="12" oninput="formatPhoneNumber(this)" required autocomplete="tel-national">
+                <input name="email" type="email" placeholder='דוא"ל' class="email-bg" required autocomplete="email">
+                <button type="submit" class="btn">שליחה</button>
+            </form>
+        </div>
+    </div>
+    <div id="popup-overlay" onclick="hidePopups()"></div>
+
+    <header>
+        <div class="pin-top-left">
+            <img class="white-logo" src="assets/logo.png" alt="Logo">
+        </div>
+        <div class="headline">
+            <h1>גם לכם מגיע החזר מס!</h1>
+            <p>תנו לנו לעזור לכם לאסוף את הכסף מהריצפה לחשבון הבנק שלכם.<br /> הבדיקה בליווי רו"ח בעל רישיון מייצג מורשה
+                מול מס הכנסה.</p>
+            <button class="btn" onclick="showPopups()">התחילו בדיקת זכאות בכמה שניות</button>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="feature-item">
+            <img src="assets/paper.png" alt="icon">
+            <p>ל<b>80%</b> מהשכירים בישראל מגיע החזר מס</p>
+        </div>
+        <div class="feature-item">
+            <img src="assets/safe.png" alt="icon">
+            <p><b>למעלה מ-3.6 מיליארד ש"ח</b> הממתינים בקופת המדינה מבלי שאף אחד ידרוש אותם</p>
+        </div>
+        <div class="feature-item">
+            <img src="assets/coins.png" alt="icon">
+            <p><b>8,450₪</b> גובה החזר ממוצע</p>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section id="tax-cases-section">
+        <h2>האם מגיע לך החזר מס?</h2>
+        <h3>להלן חלק מהמקרים</h3>
+        <div class="tax-case-container">
+            <div class="tax-case">
+                <h5>
+                    לקיחת משכנתא
+                </h5>
+                <p>
+                    בעת הליך קבלת המשכנתא מהבנק, מחויבים מקבלי המשכנתא על ידי הבנק לרכוש פוליסת ביטוח חיים. באמצעות
+                    רכישת ביטוח חיים למשכנתא ניתן לקבל החזר מס בגובה של 25 אחוז מגובה מחיר הפוליסה.
+                </p>
+            </div>
+            <div class="tax-case">
+                <h5>
+                    מסחר בשוק ההון
+                </h5>
+                <p>
+                    רווחים בשוק ההון, הבנק מנכה באופן אוטומטי את המס, כך שבסופו של יום אנו מקבלים את כספנו בניכוי המס.
+                    פקודת מס הכנסה מאפשרת לנו לקזז מהרווחים הפסדים שנוצרו בשנים קודמות ובכך להפחית את חבות המס.
+                </p>
+            </div>
+            <div class="tax-case">
+                <h5>
+                    משיכת קרן פנסיה
+                </h5>
+                <p>
+                    משכת קרן פנסיה לפני הזמן וניכו לך 35 אחוז מס. קיימות נסיבות בהן ניתן לקבל החזר: הכנסה נמוכה, נכות
+                    בשיעור 75% ומעלה, הוצאות רפואיות חריגות.
+                </p>
+            </div>
+            <div class="tax-case">
+                <h5>
+                    סיום לימודים אקדמאים
+                </h5>
+                <p>
+                    החזר מס בשל לימודים מתבצע באמצעות מתן נקודות זיכוי במס הכנסה למי שסיימו לימודים מקצועיים או תואר
+                    אקדמי. תקופת הזכאות לנקודות הזיכוי וכן הכמות ניתנות על פי פקודת מס הכנסה, מושפעות מכמה קריטריונים.
+                </p>
+            </div>
+            <div class="tax-case">
+                <h5>
+                    מס שבח
+                </h5>
+                <p>
+                    במקרים רבים אזרחים יהיו זכאים להחזר מס שבח או החזר על מס רכישה על קרקע או דירה שניה, בנוסף כל מי
+                    שמכר את דירתו היחידה בעלות של יותר מארבע וחצי מיליון, יצטרך לשלם מס שבח במעמד המכירה.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A Section -->
+    <section id="qna-section">
+        <h2>שאלות נפוצות בנושא החזר מס לשכירים</h2>
+        <div class="details-container">
+            <details>
+                <summary>
+                    <div class="blue-circle"></div>
+                    <h4>למה לבחור בכם?</h4>
+                </summary>
+                <div class="answer">
+                    <ol>
+                        <li>אנו מתמחים זמן רב בטיפול החזרי מס לשכירים וגמלאים. הצוות שלנו כולל רואי חשבון ויועצי מס בעלי
+                            ניסיון עשיר ביותר בהחזרי מס, אשר יוכלו להשיג עבורכם את המקסימום שתוכלו לקבל.</li>
+                        <li>אחד מיתרונותיו הבולטים של משרדנו הינו הטיפול עבור הלקוח מול כל הגורמים הרלוונטיים לצורך קבלת
+                            ההחזר, צוות עובדים מקצועי, אמין ודיסקרטי המסייע ללקוח באיסוף כל החומר הנדרש וער מניסיונו לכל
+                            הפרטים החשובים אשר ימקסמו את ההחזר עבור הלקוח וכל זאת ביעילות ובמהירות.</li>
+                        <li>כחלק מהשירות, משרדנו לוקח על עצמו את הסיכון כי יהיו מקרים בהם העבודה תהיה מאתגרת ולא פשוטה
+                            ולעיתים אף ללא עלות מצד הלקוח, כך שללקוח אין מה להפסיד. מנהלת תיק לקוח צמודה תשמח להעניק לכל
+                            לקוח את השירות האישי, האדיב והמקצועי ביותר, ללא פשרות. רוצים בשבילכם יותר.</li>
+                    </ol>
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div class="blue-circle"></div>
+                    <h4>הבדיקה חינם?</h4>
+                </summary>
+                <div class="answer">
+                    <p>
+                        כן. משרדנו יבצע עבורך בחינם וללא כל התחייבות בדיקת זכאות להחזר מס עבור כל אחת מ-6 שנים האחרונות.
+                        עם סיום הבדיקה, נעביר לך תשובה המבוססת על הנתונים שהעברת, אם מגיע לך החזר מס מהמדינה.
+                    </p>
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div class="blue-circle"></div>
+                    <h4>שירות החזרי מס ניתן רק לשכירים?</h4>
+                </summary>
+                <div class="answer">
+                    <p>
+                        כן, משרדנו נותן שרות להחזרי מס לשכירים בלבד.
+                        <br><br>
+                        ניתן לקבל שירותי נוספים לעצמאים כגון: הנהלת חשבונות.
+                        <br><br>
+                        פנו לנציג לפרטים נוספים.
+                    </p>
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div class="blue-circle"></div>
+                    <h4>האם יש תקופת התיישנות?<h4>
+                </summary>
+                <div class="answer">
+                    <p>
+                        כן, בהתאם לחוק, ניתן להגיש בקשה להחזר מס עד 6 שנים מתום שנת המס.
+                    </p>
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div class="blue-circle"></div>
+                    <h4>האם יכול להיות שבמקום החזר מס אני אהיה חייב למס הכנסה?</h4>
+                </summary>
+                <div class="answer">
+                    <p>
+                        לא, זו הסיבה שאנחנו כאן. כאשר מבצעים בדיקה באמצעות צוות מומחים אנחנו נאסוף את כל המידע ונבצע
+                        חישוב לפני הגשת הדוח למס הכנסה, במידה ונראה כי אין לך החזר או קיים סיכון לחוב במס הכנסה, נעדכן
+                        אותך ולא נגיש את הבקשה להחזר.
+                    </p>
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div class="blue-circle"></div>
+                    <h4>האם אפשר להגיש בקשה להחזר מס באופן עצמאי?</h4>
+                </summary>
+                <div class="answer">
+                    <p>
+                        כן, בהחלט ניתן אפשר להגיש באופן עצמאי, אך שים לב, בבדיקת התיק שלך עלול להתגלות חוב לרשות המיסים
+                        ויהיה עליך לשלם כל חוב שיעלה בבדיקה. עם מור טקס לעומת זאת, קודם כל נבדוק אם מגיע לך החזר או קיים
+                        חוב ורק אז תוכל לבחור אם להגיש את הבקשה או לא. מלבד זאת, האם אי פעם הגשת בקשה להחזר מס? התשובה
+                        היא ככל הנראה - לא.
+                        <br><br>
+                        המומחים שלנו ישיגו עבורך את המקסימום, מומחים של רואי חשבון ויועצי מס שיודעים למצות את מלוא ההחזר
+                        שמגיע לך ובמידת הצורך להגיש רק את השנים שבהם מגיע לך החזר מס וודאי. למה להתאמץ או להסתכן בתשלום
+                        חוב?
+                    </p>
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div class="blue-circle"></div>
+                    <h4>כיצד אתם משיגים את המסמכים והמידע?</h4>
+                </summary>
+                <div class="answer">
+                    <p>
+                        בעזרת החתימה שלכם לייצוג בביטוח לאומי ומס הכנסה אנחנו משיגים את כל המידע רלוונטי לביצוע החזר
+                        המס, חשוב לנו להדגיש שהייצוג ברשויות המס נועדו אך ורך לצורך בדיקה של החזרי מס.
+                    </p>
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div class="blue-circle"></div>
+                    <h4>מי זכאי להחזר מס?</h4>
+                </summary>
+                <div class="answer">
+                    <p>
+                        החזר מס זכאי כל אדם ששילם מס ביתר במהלך השנה. המס נבדק בסוף כל שנת מס ונבחן האם הנישום שילם מס
+                        בפועל יותר ממה שהיה אמור לשלם.
+                    </p>
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div class="blue-circle"></div>
+                    <h4>כמה זמן התהליך נמשך?</h4>
+                </summary>
+                <div class="answer">
+                    <p>
+                        תהליך חישוב ההחזר לוקח בדרך כלל תוך 30 ימים וכל זאת מיום המצאת כל המסמכים, לאחר ביצוע החישוב
+                        אנחנו נעדכן אתכם בגובה ההחזר, לאחר אישורכם אנחנו נטפל בכל התהליך של הגשת הדוחות למס הכנסה, לאחר
+                        קליטה של הדוחות במס הכנסה לוקח בערך 3 חודשים לכספים להיכנס לחשבון הבנק שלכם.
+                    </p>
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div class="blue-circle"></div>
+                    <h4>באילו מקרים יש סבירות גבוה שאקבל החזר מס?</h4>
+                </summary>
+                <div class="answer">
+                    <p>
+                        ישנם מספר קריטריונים שמאד נפוצים שמקנים זכאות להחזר מס:
+                    </p>
+                    <br>
+                    <ol>
+                        <li>
+                            עבודה חלקית במהלך (השנה עקב אבטלה, חופשה ללא תשלום, חילופי עבודות ומקרים נוספים של עבודות
+                            חלקיות).
+                        </li>
+                        <li>
+                            החלפת מקום עבודה או מעביד במהלך השנה, ללא ביצוע תיאום מס.
+                        </li>
+                        <li>
+                            שינוי בסטטוס האישי כגון: נישואים, לידת ילד, גירושים, תשלום מזונות וכו.
+                        </li>
+                        <li>
+                            מעבר לאזור של ישוב ספר שמקנה הטבות מס.
+                        </li>
+                        <li>
+                            חיילים משוחררים במשך שנתיים מיום סיום שירות החובה שלהם.
+                        </li>
+                        <li>
+                            פדיון קופת גמל, פנסיה או קרן השתלמות לפני המועד ותשלום מס.
+                        </li>
+                        <li>
+                            מכירת דירה או נכס ותשלום מס שבח.
+                        </li>
+                        <li>
+                            מי שסיים תואר ראשון או תעודה מקצועית.
+                        </li>
+                    </ol>
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div class="blue-circle"></div>
+                    <h4>למה בודקים את כל 6 השנים האחרונות?</h4>
+                </summary>
+                <div class="answer">
+                    <p>
+                        משרדנו מבצע בדיקת החזר מס עבור כל 6 מהשנים האחרונות ואינה בודקת שנים בודדות בנפרד. זה מאפשר לנו
+                        לבדוק את תיק המס שלך בכללותו, למצות את נקודות הזיכוי שלך ולבצע עבורך תכנון מס אופטימלי.
+                        <br><br>
+                        בדיקה של כל 6 השנים נותנת לנו מבט כולל, שעשוי להחזיר לך עוד כסף לחשבון הבנק, או לחסוך לך תשלום
+                        חוב לרשות המיסים.
+                    </p>
+                </div>
+            </details>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <section class="contact-form">
+            <h3>צרו קשר</h3>
+            <h4>השאירו את הפרטים ויועץ המס יחזור אליכם בהקדם</h4>
+            <form action="/submit" method="post" id="footer-form">
+                <input name="full-name" type="text" placeholder="שם" class="person-bg" required autocomplete="name">
+                <input name="phone-number"="tel" placeholder="טלפון" class="tel-bg" dir="rtl" minlength="12"
+                    maxlength="12" oninput="formatPhoneNumber(this)" required autocomplete="tel-national">
+                <input name="email" type="email" placeholder='דוא"ל' class="email-bg" required autocomplete="email">
+                <button type="submit">שליחה</button>
+            </form>
+        </section>
+        <section class="footer-info">
+            <div class="contact-info-box">
+                <div class="contact-info-field tel-bg">
+                    <h6 dir="rtl">55-265-5435 972+</h6>
+                </div>
+                <div class="contact-info-field email-bg">
+                    <h6>nati20h@gmail.com</h6>
+                </div>
+                <div class="contact-info-field clock-bg">
+                    <h6>שעות פעילות: א'-ה' 09:00-16:00</h6>
+                </div>
+                <div class="contact-info-field location-bg">
+                    <h6>כתובת: הכישור 47 קומה 3 חולון</h6>
+                </div>
+                <img class="white-logo" src="assets/logo.png" alt="Footer Logo">
+            </div>
+            <div class="legal-assurance">
+                <img class="tax-auth-img" src="assets/taxauth.png">
+                <p>המידע המוצג אינו מהווה ייעוץ/שיווק השקעות ואינו מהווה תחליף לייעוץ מס, ייעוץ משפטי ו/או תחליף לייעוץ
+                    אישי, המתחשב בנתונים ובצרכים של כל אדם. אין בשירות משום המלצה או חוות דעת ואינו בא במקום שיקול דעת
+                    עצמאי של המשתמש. אין באמור משום הבטחת תשואה או רווח ו/או הצעה לרכישת שירות. ייתכן שבמידע המוצג נפלו
+                    שיבושים ו/או שגיאות ו/או טעויות ו/או אי דיוקים אשר החברה אינה נושאת באחריות להם.</p>
+            </div>
+        </section>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

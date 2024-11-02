@@ -1,0 +1,449 @@
+:root {
+    --header-blue: #001F35;
+    --hover-gray: #F0F0F0;
+}
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rubik', sans-serif, Arial, Helvetica;
+    font-weight: 500;
+    direction: rtl;
+    background-color: #FFFFFF;
+    color: var(--header-blue);
+}
+
+p {
+    font-weight: 400;
+}
+
+b {
+    font-weight: 500;
+}
+
+/* Whatsapp icon */
+.float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 32px;
+    right: 33px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 2px #999;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Site Header */
+header {
+    text-align: center;
+    background-color: var(--header-blue);
+    color: #FFFFFF;
+    padding: 100px 0;
+}
+
+header .headline {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+
+.pin-top-left {
+    position: absolute;
+    top: 8px;
+    left: 15px;
+}
+
+.white-logo {
+    filter: invert(100%);
+    height: 100px;
+}
+
+header .headline h1 {
+    font-family: 'Alef', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+header .headline p {
+    font-weight: 300;
+    padding: 15px 0;
+    font-size: 1.2rem;
+}
+
+.btn {
+    font-family: inherit;
+    font-weight: inherit;
+    padding: 10px 40px;
+    background-color: #FFFFFF;
+    color: var(--header-blue);
+    border-radius: 100px;
+    border-width: 0;
+    cursor: pointer;
+}
+
+/* Features section */
+#features {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: white;
+    padding: 5vh 5vw;
+}
+
+.feature-item {
+    flex: 1;
+    text-align: center;
+    max-width: 20vw;
+    font-size: 1.2rem;
+}
+
+.feature-item img {
+    height: 10vh;
+}
+
+.feature-item p {
+    padding: 15px 0;
+}
+
+/* Tax return cases */
+#tax-cases-section {
+    text-align: center;
+}
+
+#tax-cases-section h2 {
+    font-weight: 500;
+}
+
+#tax-cases-section h3 {
+    margin: 20px 0;
+    font-weight: 400;
+}
+
+.tax-case-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2.5vw;
+    margin: 0 3vw;
+}
+
+.tax-case {
+    border-radius: 8px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #007DD3;
+    padding: 12px 1vw;
+    max-width: 140px;
+}
+
+.tax-case h5 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 1vh;
+}
+
+.tax-case p {
+    font-size: 0.8rem;
+}
+
+/* Q&A */
+#qna-section {
+    padding: 40px 8vw;
+}
+
+#qna-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.details-container {
+    border: 2px solid var(--header-blue);
+}
+
+.details-container details summary {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding: 15px;
+    cursor: pointer;
+    border-top: 2px solid var(--header-blue);
+}
+
+.details-container details summary:hover {
+    background-color: var(--hover-gray);
+}
+
+.details-container :first-child summary {
+    border-top: none;
+}
+
+.answer {
+    padding: 10px 5vw;
+}
+
+.answer * {
+    font: inherit;
+}
+
+ol * {
+    margin-bottom: 10px;
+}
+
+ol :last-child {
+    margin-bottom: 0;
+}
+
+.blue-circle {
+    width: 20px;
+    height: 20px;
+    background-color: #007DD3;
+    border-radius: 50%;
+}
+
+/* Form Section */
+.contact-form {
+    padding: 40px;
+    text-align: center;
+    font-family: 'Nunito', 'Rubik', sans-serif;
+    font-style: normal
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-form h3 {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.contact-form h4 {
+    font-weight: 400;
+    font-size: 1rem;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.contact-form input {
+    padding: 10px;
+    width: 300px;
+    border-radius: 30px;
+    border: none;
+
+    background-repeat: no-repeat;
+    background-position: calc(100% - 8px) center;
+    background-size: 18px;
+    text-indent: 25px;
+}
+
+::placeholder {
+    font-family: inherit;
+}
+
+.contact-form input :active {
+    background-image: none;
+}
+
+.contact-form button {
+    font-family: inherit;
+    font-weight: 600;
+    background-color: #FFFFFF;
+    border-radius: 100px;
+    padding: 8px 20px;
+    cursor: pointer;
+    border: none;
+}
+
+footer {
+    background-color: var(--header-blue);
+    color: white;
+    text-align: center;
+    margin-top: 100px;
+    padding-top: 20px;
+    padding-bottom: 80px;
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    text-align: right;
+    padding: 20px;
+}
+
+.contact-info-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-info-box .white-logo {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-info-field {
+    filter: invert(100%);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 3px) 3px;
+    background-size: 15px;
+    font-weight: 300;
+    font-size: 0.8rem;
+    text-indent: 25px;
+    min-height: 20px;
+    line-height: 20px;
+}
+
+.contact-info-field * {
+    font: inherit;
+    filter: invert(100%);
+    /* invert everything back except the background */
+}
+
+.legal-assurance {
+    flex: 4;
+    margin-top: auto;
+}
+
+.legal-assurance img {
+    max-height: 8vh;
+    max-width: 40vw;
+    aspect-ratio: 461 / 88;
+}
+
+.legal-assurance p {
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 0.6rem;
+    max-width: 45vw;
+}
+
+/* Popups */
+#popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    max-width: 90%;
+    max-height: 90%;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 40px;
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+}
+
+.popup h1 {
+    font-weight: 500;
+    font-size: inherit;
+    font-size: 2.5rem;
+}
+
+.popup p,
+.form-group label {
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+.popup .btn {
+    background-color: var(--header-blue);
+    color: #FFFFFF;
+    padding: 10px 150px;
+    max-width: 70%;
+}
+
+#tax-refund-form {
+    overflow-y: scroll;
+}
+
+#first-popup {
+    flex-direction: column;
+}
+
+#second-popup {
+    font-size: 1.2rem;
+}
+
+#second-popup input {
+    border: 1px solid var(--header-blue);
+}
+
+#second-popup h2 {
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+#second-popup .contact-form {
+    padding: 10px;
+}
+
+.form-grid {
+    display: grid;
+    align-items: end;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem 1.5rem;
+    margin: 20px 5%;
+    text-align: right;
+}
+
+.form-group {
+    flex: 1;
+    padding: 0 5px;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid var(--header-blue);
+    border-radius: 30px;
+    font-size: 0.9em;
+}
+
+.person-bg {
+    background-image: url('assets/person.svg')
+}
+
+.tel-bg {
+    background-image: url('assets/call.svg')
+}
+
+.clock-bg {
+    background-image: url('assets/clock.svg')
+}
+
+.email-bg {
+    background-image: url('assets/mail.svg')
+}
+
+.location-bg {
+    background-image: url('assets/location.svg')
+}
