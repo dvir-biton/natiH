@@ -146,7 +146,7 @@
             <h1>גם לכם מגיע החזר מס!</h1>
             <p>תנו לנו לעזור לכם לאסוף את הכסף מהריצפה לחשבון הבנק שלכם.<br /> הבדיקה בליווי רו"ח בעל רישיון מייצג מורשה
                 מול מס הכנסה.</p>
-            <button class="btn" onclick="showPopups()">התחילו בדיקת זכאות בכמה שניות</button>
+            <button class="btn white-btn" onclick="showPopups()">התחילו בדיקת זכאות בכמה שניות</button>
         </div>
     </header>
 
@@ -402,6 +402,9 @@
                 </div>
             </details>
     </section>
+    <section id="center-btn-section">
+        <button class="btn">התחילו בדיקת זכאות בכמה שניות</button>
+    </section>
 
     <!-- Footer Section -->
     <footer>
@@ -410,7 +413,7 @@
             <h4>השאירו את הפרטים ויועץ המס יחזור אליכם בהקדם</h4>
             <form action="/submit" method="post" id="footer-form">
                 <input name="full-name" type="text" placeholder="שם" class="person-bg" required autocomplete="name">
-                <input name="phone-number"="tel" placeholder="טלפון" class="tel-bg" dir="rtl" minlength="12"
+                <input name="phone-number" type="tel" placeholder="טלפון" class="tel-bg" dir="rtl" minlength="12"
                     maxlength="12" oninput="formatPhoneNumber(this)" required autocomplete="tel-national">
                 <input name="email" type="email" placeholder='דוא"ל' class="email-bg" required autocomplete="email">
                 <button type="submit">שליחה</button>
