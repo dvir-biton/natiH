@@ -1,7 +1,6 @@
 const express = require('express');
 const fs = require('fs');
 const http = require('http');
-const https = require('https');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const rateLimit = require('express-rate-limit');
@@ -12,7 +11,6 @@ const formDropdownMap = require('./form-dropdown.json')
 require('dotenv').config();
 
 const HTTP_PORT = 3000;
-const HTTPS_PORT = 443;
 
 const RATELIMIT_TIME = 10 * 60 * 1000; // 10 minutes
 const RATELIMIT_MAX_REQUESTS = 5;
@@ -91,11 +89,6 @@ app.post('/submit', emailLimiter, (req, res) => {
 
 });
 
-const sslOptions = {
-    key: fs.readFileSync('server.key'),
-    cert: fs.readFileSync('server.cert')
-};
-
-https.createServer(sslOptions, app).listen(HTTPS_PORT, () => {
-    console.log(`HTTPS server running at https://localhost:${HTTPS_PORT}`);
+app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}`);
 });
