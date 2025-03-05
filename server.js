@@ -102,7 +102,11 @@ https.createServer(sslOptions, app).listen(HTTPS_PORT, () => {
 
 // Redirect port
 http.createServer((req, res) => {
-    res.writeHead(301, { "Location": `https://${req.headers.host}${req.url}` });
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+        res.writeHead(301, { "Location": `https://${req.headers.host}${req.url}` });
+    } else {
+        res.writeHead(200);
+    }
     res.end();
 }).listen(HTTP_PORT, () => {
     console.log(`HTTP to HTTPS redirect server running on port ${HTTP_PORT}`);
