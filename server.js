@@ -10,7 +10,7 @@ const formDropdownMap = require('./form-dropdown.json')
 
 require('dotenv').config();
 
-const HTTP_PORT = 3000;
+const HTTP_PORT = 8080;
 
 const RATELIMIT_TIME = 10 * 60 * 1000; // 10 minutes
 const RATELIMIT_MAX_REQUESTS = 5;
@@ -89,6 +89,6 @@ app.post('/submit', emailLimiter, (req, res) => {
 
 });
 
-app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
+app.listen(HTTP_PORT, () => {
+    console.log(`Server is running at http://localhost:${HTTP_PORT}`);
 });
