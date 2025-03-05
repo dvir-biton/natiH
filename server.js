@@ -1,19 +1,29 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const rateLimit = require('express-rate-limit')
+const fs = require('fs');
+const http = require('http');
+const https = require('https');
 const nodemailer = require('nodemailer');
+const bodyParser = require('body-parser');
+const rateLimit = require('express-rate-limit');
+const sanitizer = require('sanitizer');
+
 const formDropdownMap = require('./form-dropdown.json')
+
 require('dotenv').config();
 
-const app = express();
-const port = 3000;
+const HTTP_PORT = 3000;
+const HTTPS_PORT = 443;
 
+const RATELIMIT_TIME = 10 * 60 * 1000; // 10 minutes
+const RATELIMIT_MAX_REQUESTS = 5;
+
+const app = express();
 app.use(bodyParser.json());
-app.use('/', express.static(__dirname + '/web'));
+app.use('/', express.static(__dirname + '/web')); // Load the frontend into '/'
 
 const emailLimiter = rateLimit({
-    windowMs: 10 * 60 * 1000, // 10 minutes
-    max: 5,
+    windowMs: RATELIMIT_TIME,
+    max: RATELIMIT_MAX_REQUESTS,
     message: 'Too many requests from this IP, please try again later.'
 });
 
@@ -35,9 +45,10 @@ function convertToDisplayText(formData) {
     for (const [field, value] of Object.entries(formData)) {
         // Values recieved from the HTML are an index to their answer in formDropdownMap
         const numValue = Number(value);
-        if (numValue && formDropdownMap[field]) {
+        const fieldMapList = formDropdownMap[field];
+        if (numValue && fieldMapList && numValue > 0 && numValue < fieldMapList.length) {
             // The first string in the list is the question
-            convertedData[formDropdownMap[field][0]] = formDropdownMap[field][numValue];
+            convertedData[fieldMapList[0]] = fieldMapList[numValue];
         }
     }
     return convertedData;
@@ -49,6 +60,11 @@ app.post('/submit', emailLimiter, (req, res) => {
     if (!formData["full-name"] || !formData["phone-number"] || !formData["email"]) {
         return res.status(400).json({ error: 'Missing required fields.' });
     }
+
+    // Avoid email XSS attacks
+    formData["full-name"] = sanitizer.escape(formData["full-name"])
+    formData["phone-number"] = sanitizer.escape(formData["phone-number"])
+    formData["email"] = sanitizer.escape(formData["email"])
 
     const displayFormData = convertToDisplayText(formData);
     // Convert the data into a string to put in the email's content
@@ -75,6 +91,19 @@ app.post('/submit', emailLimiter, (req, res) => {
 
 });
 
-app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
+const sslOptions = {
+    key: fs.readFileSync('server.key'),
+    cert: fs.readFileSync('server.cert')
+};
+
+https.createServer(sslOptions, app).listen(HTTPS_PORT, () => {
+    console.log(`HTTPS server running at https://localhost:${HTTPS_PORT}`);
+});
+
+// Redirect port
+http.createServer((req, res) => {
+    res.writeHead(301, { "Location": `https://${req.headers.host}${req.url}` });
+    res.end();
+}).listen(HTTP_PORT, () => {
+    console.log(`HTTP to HTTPS redirect server running on port ${HTTP_PORT}`);
 });

@@ -10,6 +10,10 @@
 
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="assets/logo.png" type="image/png">
+	
+	<div style="position: fixed; top: 10px; right: 10px; font-size: 1.2em; font-weight: bold; z-index: 1000; color: white;">
+        בס"ד
+    </div>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,12 +21,58 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Rubik:wght@300..900&display=swap"
         rel="stylesheet">
+		
+	<!-- Accessibility Menu -->
+	<style>
+    #accessibility-menu {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: var(--header-blue);
+      color: white;
+      border-radius: 10px;
+      padding: 10px;
+      z-index: 1000;
+      font-family: inherit;
+    }
+
+    #accessibility-menu button {
+      background: none;
+      border: none;
+      color: white;
+      margin: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    #accessibility-options {
+      display: none;
+      margin-top: 10px;
+      text-align: left;
+    }
+
+    /* When active, show the options */
+    #accessibility-menu.active #accessibility-options {
+      display: block;
+    }
+  </style>
 </head>
 
 <body>
     <a href="https://wa.me/972552655435?text=שלום,+אני+מעוניין+בבדיקת+זכאות+להחזר+מס." class="float">
         <img src="assets/whatsapp.svg" alt="Chat on Whatsapp">
     </a>
+	
+	<!-- Accessibility Menu -->
+  <div id="accessibility-menu">
+    <button id="accessibility-toggle">נגישות</button>
+    <div id="accessibility-options">
+      <button id="increase-font">להגדיל גופן</button>
+      <button id="decrease-font">להקטין גופן</button>
+      <button id="toggle-contrast">ניגודיות גבוהה</button>
+      <button id="reset-accessibility">איפוס</button>
+    </div>
+  </div>
 
     <div id="first-popup" class="popup">
         <h1>כנראה ומגיע לכם החזר מס!</h1>
@@ -132,7 +182,7 @@
                 <input name="phone-number"="tel" placeholder="טלפון" class="tel-bg" dir="rtl" minlength="12"
                     maxlength="12" oninput="formatPhoneNumber(this)" required autocomplete="tel-national">
                 <input name="email" type="email" placeholder='דוא"ל' class="email-bg" required autocomplete="email">
-                <button type="submit" class="btn">שליחה</button>
+                <button type="submit" class="btn" name="submitButton">שליחה</button>
             </form>
         </div>
     </div>
@@ -140,7 +190,6 @@
 
     <header>
         <div class="pin-top-left">
-            <p>בס"ד</p>
             <img class="white-logo" src="assets/logo.png" alt="Logo">
         </div>
         <div class="headline">
@@ -155,15 +204,15 @@
     <section id="features">
         <div class="feature-item">
             <img src="assets/paper.png" alt="icon">
-            <p><b>לכל 4 מ5</b> מהשכירים בישראל מגיע החזר מס</p>
+            <p>ל<b>80%</b> מהשכירים בישראל מגיע החזר מס</p>
         </div>
         <div class="feature-item">
             <img src="assets/safe.png" alt="icon">
-            <p><b>מבקר המדינה חושף - למעלה מ-3.6 מיליארד ש"ח</b> הממתינים בקופת המדינה מבלי שאף אחד ידרוש אותם</p>
+            <p><b>למעלה מ-3.6 מיליארד ש"ח</b> הממתינים בקופת המדינה מבלי שאף אחד ידרוש אותם</p>
         </div>
         <div class="feature-item">
             <img src="assets/coins.png" alt="icon">
-            <p><b>8,000₪</b> גובה החזר ממוצע</p>
+            <p><b>8,450₪</b> גובה החזר ממוצע</p>
         </div>
     </section>
 
@@ -177,8 +226,7 @@
                     לקיחת משכנתא
                 </h5>
                 <p>
-                    בעת הליך קבלת המשכנתא מהבנק, מחויבים מקבלי המשכנתא על ידי הבנק לרכוש פוליסת ביטוח חיים. באמצעות
-                    רכישת ביטוח חיים למשכנתא ניתן לקבל החזר מס בגובה של 25 אחוז מגובה מחיר הפוליסה.
+                    בעת קבלת משכנתא, הבנק מחייב לרכוש ביטוח חיים. רכישת הביטוח מאפשרת קבלת החזר מס של 25% מעלות הפוליסה.
                 </p>
             </div>
             <div class="tax-case">
@@ -186,8 +234,7 @@
                     מסחר בשוק ההון
                 </h5>
                 <p>
-                    רווחים בשוק ההון, הבנק מנכה באופן אוטומטי את המס, כך שבסופו של יום אנו מקבלים את כספנו בניכוי המס.
-                    פקודת מס הכנסה מאפשרת לנו לקזז מהרווחים הפסדים שנוצרו בשנים קודמות ובכך להפחית את חבות המס.
+                    הבנק מנכה מס אוטומטית מרווחי שוק ההון. לפי פקודת מס הכנסה, ניתן לקזז הפסדים משנים קודמות ולהפחית את חבות המס.
                 </p>
             </div>
             <div class="tax-case">
@@ -195,8 +242,7 @@
                     משיכת קרן פנסיה
                 </h5>
                 <p>
-                    משכת קרן פנסיה לפני הזמן וניכו לך 35 אחוז מס. קיימות נסיבות בהן ניתן לקבל החזר: הכנסה נמוכה, נכות
-                    בשיעור 75% ומעלה, הוצאות רפואיות חריגות.
+                    במשיכה מוקדמת מנוכה 35% מס, אך ניתן לקבל החזר במקרים של הכנסה נמוכה, נכות מעל 75% או הוצאות רפואיות חריגות.
                 </p>
             </div>
             <div class="tax-case">
@@ -204,8 +250,7 @@
                     סיום לימודים אקדמאים
                 </h5>
                 <p>
-                    החזר מס בשל לימודים מתבצע באמצעות מתן נקודות זיכוי במס הכנסה למי שסיימו לימודים מקצועיים או תואר
-                    אקדמי. תקופת הזכאות לנקודות הזיכוי וכן הכמות ניתנות על פי פקודת מס הכנסה, מושפעות מכמה קריטריונים.
+                    בוגרי תואר אקדמי או לימודים מקצועיים זכאים להחזר מס באמצעות נקודות זיכוי. כמות הנקודות ומשך הזכאות נקבעים בהתאם לפקודת מס הכנסה ומושפעים מפרמטרים שונים, כגון סוג התואר והיקף הלימודים.
                 </p>
             </div>
             <div class="tax-case">
@@ -213,8 +258,7 @@
                     מס שבח
                 </h5>
                 <p>
-                    במקרים רבים אזרחים יהיו זכאים להחזר מס שבח או החזר על מס רכישה על קרקע או דירה שניה, בנוסף כל מי
-                    שמכר את דירתו היחידה בעלות של יותר מארבע וחצי מיליון, יצטרך לשלם מס שבח במעמד המכירה.
+                    אזרחים רבים זכאים להחזר על מס שבח או מס רכישה עבור קרקע או דירה שנייה. בנוסף, מי שמוכר דירה יחידה בשווי מעל 4.5 מיליון ש"ח מחויב בתשלום מס שבח בעת המכירה.
                 </p>
             </div>
         </div>
@@ -227,18 +271,13 @@
             <details>
                 <summary>
                     <div class="blue-circle"></div>
-                    <h4>למה לבחור בכם?</h4>
+                    <h4>למה לבחור בנו?</h4>
                 </summary>
                 <div class="answer">
                     <ol>
-                        <li>אנו מתמחים זמן רב בטיפול החזרי מס לשכירים וגמלאים. הצוות שלנו כולל רואי חשבון ויועצי מס בעלי
-                            ניסיון עשיר ביותר בהחזרי מס, אשר יוכלו להשיג עבורכם את המקסימום שתוכלו לקבל.</li>
-                        <li>אחד מיתרונותיו הבולטים של משרדנו הינו הטיפול עבור הלקוח מול כל הגורמים הרלוונטיים לצורך קבלת
-                            ההחזר, צוות עובדים מקצועי, אמין ודיסקרטי המסייע ללקוח באיסוף כל החומר הנדרש וער מניסיונו לכל
-                            הפרטים החשובים אשר ימקסמו את ההחזר עבור הלקוח וכל זאת ביעילות ובמהירות.</li>
-                        <li>כחלק מהשירות, משרדנו לוקח על עצמו את הסיכון כי יהיו מקרים בהם העבודה תהיה מאתגרת ולא פשוטה
-                            ולעיתים אף ללא עלות מצד הלקוח, כך שללקוח אין מה להפסיד. מנהל תיק לקוח צמודה ישמח להעניק לכל
-                            לקוח את השירות האישי, האדיב והמקצועי ביותר, ללא פשרות. רוצים בשבילכם יותר.</li>
+                        <li>אנו מתמחים בהחזרי מס לשכירים וגמלאים, עם צוות מנוסה של רואי חשבון ויועצי מס שמבטיחים למקסם את ההחזר המגיע לכם.</li>
+                        <li>יתרון משמעותי שלנו הוא טיפול מלא מול כל הגורמים הרלוונטיים, תוך ליווי אישי, מקצועי ודיסקרטי. אנו דואגים לאיסוף כל המסמכים הנדרשים ומנצלים את ניסיוננו כדי למקסם את ההחזר במהירות וביעילות.</li>
+                        <li>בנוסף, אנו לוקחים על עצמנו את הסיכון – במקרים מורכבים, ייתכן שהעבודה תתבצע ללא עלות מצדכם, כך שאין לכם מה להפסיד. מנהל תיק אישי ילווה אתכם לאורך כל הדרך עם שירות אישי, אדיב ומקצועי. אנחנו כאן כדי להשיג לכם יותר!</li>
                     </ol>
                 </div>
             </details>
@@ -249,36 +288,31 @@
                 </summary>
                 <div class="answer">
                     <p>
-                        כן. משרדנו יבצע עבורך בחינם וללא כל התחייבות בדיקת זכאות להחזר מס עבור כל אחת מ-6 שנים האחרונות.
-                        עם סיום הבדיקה, נעביר לך תשובה המבוססת על הנתונים שהעברת, אם מגיע לך החזר מס מהמדינה.
+                        כן! אנו מציעים בדיקת זכאות להחזר מס ללא עלות וללא התחייבות, עבור כל אחת מ-6 השנים האחרונות. לאחר הבדיקה, נספק לך תשובה המבוססת על הנתונים שהעברת, ונעדכן אם מגיע לך החזר מס מהמדינה.
                     </p>
                 </div>
             </details>
             <details>
                 <summary>
                     <div class="blue-circle"></div>
-                    <h4>שירות החזרי מס ניתן רק לשכירים?</h4>
+                    <h4>האם שירות החזרי המס מיועד רק לשכירים?</h4>
                 </summary>
                 <div class="answer">
                     <p>
-                        כן, משרדנו נותן שרות להחזרי מס לשכירים בלבד.
+                        כן, אנו מתמחים בהחזרי מס לשכירים בלבד.
                         <br><br>
-                        ניתן לקבל שירותי נוספים לעצמאים כגון: הנהלת חשבונות.
-                        <br><br>
-                        פנו לנציג לפרטים נוספים.
+                        לעצמאים אנו מציעים שירותים נוספים, כגון הנהלת חשבונות. לפרטים נוספים ניתן לפנות לנציגנו.
                     </p>
                 </div>
             </details>
             <details>
                 <summary>
                     <div class="blue-circle"></div>
-                    <h4>האם יכול להיות שבמקום החזר מס אני אהיה חייב למס הכנסה?</h4>
+                    <h4>האם קיים סיכון לחוב במקום החזר מס?<h4>
                 </summary>
                 <div class="answer">
                     <p>
-                        לא, זו הסיבה שאנחנו כאן. כאשר מבצעים בדיקה באמצעות צוות מומחים אנחנו נאסוף את כל המידע ונבצע
-                        חישוב לפני הגשת הדוח למס הכנסה, במידה ונראה כי אין לך החזר או קיים סיכון לחוב במס הכנסה, נעדכן
-                        אותך ולא נגיש את הבקשה להחזר.
+                        לא. זו בדיוק הסיבה שאנו כאן. לפני הגשת הדוח, צוות המומחים שלנו יבצע בדיקה מעמיקה ויחשב את זכאותך להחזר. אם יתגלה כי אין לך החזר או שקיים סיכון לחוב במס הכנסה, נעדכן אותך מראש ולא נגיש את הבקשה.
                     </p>
                 </div>
             </details>
@@ -289,14 +323,11 @@
                 </summary>
                 <div class="answer">
                     <p>
-                        כן, בהחלט ניתן אפשר להגיש באופן עצמאי, אך שים לב, בבדיקת התיק שלך עלול להתגלות חוב לרשות המיסים
-                        ויהיה עליך לשלם כל חוב שיעלה בבדיקה. עם משרדנו לעומת זאת, קודם כל נבדוק אם מגיע לך החזר או קיים
-                        חוב ורק אז תוכל לבחור אם להגיש את הבקשה או לא. מלבד זאת, האם אי פעם הגשת בקשה להחזר מס? התשובה
-                        היא ככל הנראה - לא.
-                        <br><br>
-                        המומחים שלנו ישיגו עבורך את המקסימום, מומחים של רואי חשבון ויועצי מס שיודעים למצות את מלוא ההחזר
-                        שמגיע לך ובמידת הצורך להגיש רק את השנים שבהם מגיע לך החזר מס וודאי. למה להתאמץ או להסתכן בתשלום
-                        חוב?
+                        כן, ניתן להגיש בקשה להחזר מס באופן עצמאי. עם זאת, חשוב לדעת שבמהלך הבדיקה עלול להתגלות חוב לרשות המיסים, שעליך לשלם במידה ויימצא.
+						<br><br>
+						כאשר פונים אלינו, אנו מבצעים בדיקה מקדימה – אם אין החזר או קיים סיכון לחוב, ניידע אותך מראש ולא נגיש את הבקשה.
+						<br><br>
+						בנוסף, רוב האנשים אינם מנוסים בהגשת החזרי מס. צוות המומחים שלנו, הכולל רואי חשבון ויועצי מס, יוודא שתקבל את ההחזר המקסימלי, תוך הגשת בקשות רק עבור השנים שבהן מגיע לך החזר בוודאות. למה להסתכן או להתאמץ כשאפשר לתת למומחים לעשות את העבודה עבורך?
                     </p>
                 </div>
             </details>
@@ -307,8 +338,7 @@
                 </summary>
                 <div class="answer">
                     <p>
-                        בעזרת החתימה שלכם לייצוג בביטוח לאומי ומס הכנסה אנחנו משיגים את כל המידע רלוונטי לביצוע החזר
-                        המס, חשוב לנו להדגיש שהייצוג ברשויות המס נועדו אך ורך לצורך בדיקה של החזרי מס.
+                        באמצעות חתימתך על ייפוי כוח לייצוג מול ביטוח לאומי ומס הכנסה, אנו אוספים את כל המידע הדרוש לבדיקת זכאותך להחזר מס. חשוב להדגיש כי הייצוג משמש אך ורק לצורך בדיקת החזרי מס, ללא התחייבות נוספת.
                     </p>
                 </div>
             </details>
@@ -319,60 +349,60 @@
                 </summary>
                 <div class="answer">
                     <p>
-                        החזר מס זכאי כל אדם ששילם מס ביתר במהלך השנה. המס נבדק בסוף כל שנת מס ונבחן האם הנישום שילם מס
-                        בפועל יותר ממה שהיה אמור לשלם.
+                        כל אדם ששילם מס מעבר לנדרש במהלך השנה זכאי להחזר. בסוף כל שנת מס נבדק האם הסכום ששולם גבוה מהחיוב האמיתי, ובמקרה כזה ניתן לקבל החזר מרשויות המס.
                     </p>
                 </div>
             </details>
             <details>
                 <summary>
                     <div class="blue-circle"></div>
-                    <h4>כמה זמן התהליך נמשך?</h4>
+                    <h4>כמה זמן נמשך התהליך?</h4>
                 </summary>
                 <div class="answer">
                     <p>
-                        תהליך חישוב ההחזר לוקח בדרך כלל תוך 14 ימים וכל זאת מיום המצאת כל המסמכים, לאחר ביצוע החישוב
-                        אנחנו נעדכן אתכם בגובה ההחזר, לאחר אישורכם אנחנו נטפל בכל התהליך של הגשת הדוחות למס הכנסה.
+                        חישוב ההחזר אורך בדרך כלל עד 14 ימים מרגע קבלת כל המסמכים. לאחר החישוב נעדכן אותך בגובה ההחזר, ובאישורך נגיש את הדוחות למס הכנסה ונטפל בתהליך כולו עבורך.
                     </p>
                 </div>
             </details>
             <details>
                 <summary>
                     <div class="blue-circle"></div>
-                    <h4>באילו מקרים יש סבירות גבוהה שאקבל החזר מס?</h4>
+                    <h4>באילו מקרים יש סבירות גבוה שאקבל החזר מס?</h4>
                 </summary>
                 <div class="answer">
                     <p>
-                        ישנם מספר קריטריונים שמאד נפוצים שמקנים זכאות להחזר מס:
+                        החזר מס עשוי להגיע במקרים נפוצים כגון:
                     </p>
                     <br>
                     <ol>
                         <li>
-                            עבודה חלקית במהלך (השנה עקב אבטלה, חופשה ללא תשלום, חילופי עבודות ומקרים נוספים של עבודות
-                            חלקיות).
+                            עבודה חלקית במהלך השנה (עקב אבטלה, חל"ת, חילופי עבודות וכו').
                         </li>
                         <li>
-                            החלפת מקום עבודה או מעביד במהלך השנה, ללא ביצוע תיאום מס.
+                            החלפת מקום עבודה ללא ביצוע תיאום מס.
                         </li>
                         <li>
-                            שינוי בסטטוס האישי כגון: נישואים, לידת ילד, גירושים, תשלום מזונות וכו.
+                            שינוי בסטטוס אישי (נישואים, לידת ילד, גירושין, תשלום מזונות).
                         </li>
                         <li>
-                            מעבר לאזור של ישוב ספר שמקנה הטבות מס.
+                            מעבר ליישוב זכאי להטבות מס.
                         </li>
                         <li>
-                            חיילים משוחררים במשך שנתיים מיום סיום שירות החובה שלהם.
+                            חיילים משוחררים בשנתיים הראשונות לאחר סיום שירות החובה.
                         </li>
                         <li>
-                            פדיון קופת גמל, פנסיה או קרן השתלמות לפני המועד ותשלום מס.
+                            פדיון מוקדם של קופת גמל, פנסיה או קרן השתלמות ותשלום מס.
                         </li>
                         <li>
-                            מכירת דירה או נכס ותשלום מס שבח.
+                            תשלום מס שבח על מכירת דירה או נכס.
                         </li>
                         <li>
-                            מי שסיים תואר ראשון או תעודה מקצועית.
+                            סיום תואר אקדמי או הכשרה מקצועית.
                         </li>
                     </ol>
+					<p>
+                        אם אחד מהמקרים האלו רלוונטי עבורך, ייתכן שמגיע לך החזר מס.
+                    </p>
                 </div>
             </details>
             <details>
@@ -382,8 +412,7 @@
                 </summary>
                 <div class="answer">
                     <p>
-                        משרדנו מבצע בדיקת החזר מס עבור כל 6 מהשנים האחרונות בהתאם לחוק. זה מאפשר לנו
-                        לבדוק את תיק המס שלך בכללותו, למצות את נקודות הזיכוי שלך ולבצע עבורך תכנון מס אופטימלי.
+                        אנו בודקים זכאות להחזר מס עבור 6 השנים האחרונות, בהתאם לחוק. כך ניתן לבחון את תיק המס שלך באופן מקיף, למצות את כל נקודות הזיכוי ולהבטיח תכנון מס אופטימלי עבורך.
                     </p>
                 </div>
             </details>
@@ -402,7 +431,7 @@
                 <input name="phone-number" type="tel" placeholder="טלפון" class="tel-bg" dir="rtl" minlength="12"
                     maxlength="12" oninput="formatPhoneNumber(this)" required autocomplete="tel-national">
                 <input name="email" type="email" placeholder='דוא"ל' class="email-bg" required autocomplete="email">
-                <button type="submit">שליחה</button>
+                <button type="submit" name="submitButton">שליחה</button>
             </form>
         </section>
         <section class="footer-info">
@@ -414,7 +443,10 @@
                     <h6>nati20h@gmail.com</h6>
                 </div>
                 <div class="contact-info-field clock-bg">
-                    <h6>שעות פעילות: א'-ה' 09:00-18:00</h6>
+                    <h6>שעות פעילות: א'-ה' 09:00-16:00</h6>
+                </div>
+                <div class="contact-info-field location-bg">
+                    <h6>כתובת: הכישור 47 קומה 3 חולון</h6>
                 </div>
                 <img class="white-logo" src="assets/logo.png" alt="Footer Logo">
             </div>
@@ -429,6 +461,48 @@
     </footer>
 
     <script src="script.js"></script>
+	
+	<script>
+    // Toggle the accessibility options panel
+    const accessibilityToggle = document.getElementById('accessibility-toggle');
+    const accessibilityMenu = document.getElementById('accessibility-menu');
+
+    accessibilityToggle.addEventListener('click', () => {
+      accessibilityMenu.classList.toggle('active');
+    });
+
+    // Increase font size
+    document.getElementById('increase-font').addEventListener('click', () => {
+      const currentSize = parseFloat(getComputedStyle(document.body).fontSize);
+      document.body.style.fontSize = (currentSize + 1) + 'px';
+    });
+
+    // Decrease font size
+    document.getElementById('decrease-font').addEventListener('click', () => {
+      const currentSize = parseFloat(getComputedStyle(document.body).fontSize);
+      document.body.style.fontSize = (currentSize - 1) + 'px';
+    });
+
+    // Toggle high contrast mode
+    let highContrastEnabled = false;
+    document.getElementById('toggle-contrast').addEventListener('click', () => {
+      highContrastEnabled = !highContrastEnabled;
+      if (highContrastEnabled) {
+        document.body.style.backgroundColor = '#000';
+        document.body.style.color = '#fff';
+      } else {
+        document.body.style.backgroundColor = '';
+        document.body.style.color = '';
+      }
+    });
+
+    // Reset accessibility adjustments
+    document.getElementById('reset-accessibility').addEventListener('click', () => {
+      document.body.style.fontSize = '';
+      document.body.style.backgroundColor = '';
+      document.body.style.color = '';
+    });
+  </script>
 </body>
 
 </html>

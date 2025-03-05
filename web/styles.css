@@ -255,6 +255,7 @@ ol :last-child {
     width: 300px;
     border-radius: 30px;
     border: none;
+    max-width: 68%;
 
     background-repeat: no-repeat;
     background-position: calc(100% - 8px) center;
@@ -389,7 +390,7 @@ footer {
 .popup .btn {
     background-color: var(--header-blue);
     color: #FFFFFF;
-    padding: 10px 150px;
+    width: 315px;
 }
 
 #tax-refund-form {

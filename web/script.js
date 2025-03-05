@@ -30,6 +30,8 @@ taxRefundForm.addEventListener('submit', function (e) {
 // Second popup 
 const popupContactForm = document.getElementById('popup-contact-form');
 popupContactForm.addEventListener('submit', function (e) {
+    this.submitButton.disabled = true;
+    this.submitButton.innerText = "שולח...";
     for (let element of this.elements) {
         if (element.name) {
             taxRefundFormData[element.name] = element.value;
@@ -41,11 +43,16 @@ popupContactForm.addEventListener('submit', function (e) {
             taxRefundForm.reset();
             this.reset();
         }
-    });
+    }).finally(() => {
+        this.submitButton.disabled = false;
+        this.submitButton.innerText = "שליחה";
+    })
 });
 
 // Footer form
 document.getElementById('footer-form').addEventListener('submit', function (e) {
+    this.submitButton.disabled = true;
+    this.submitButton.innerText = "שולח...";
     e.preventDefault();
     const formData = {};
     for (let element of this.elements) {
@@ -57,7 +64,10 @@ document.getElementById('footer-form').addEventListener('submit', function (e) {
         if (ok) {
             this.reset();
         }
-    });
+    }).finally(() => {
+        this.submitButton.disabled = false;
+        this.submitButton.innerText = "שליחה";
+    })
 });
 
 function sendForm(data) {
